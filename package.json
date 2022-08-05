@@ -1,0 +1,17 @@
+{
+  "name": "monogo-rest-api",
+  "version": "1.0.0",
+  "description": "RESTful API for CRUD Operations on local machine MongoDB",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HyperX",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.5.1"
+  }
+}
