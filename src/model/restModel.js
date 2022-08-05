@@ -12,20 +12,22 @@ export const UserSchema = new schema({
         type: String,
 
         //this specifies that the name field is required
-        // required: 'Please enter a name.'
+        required: 'Please enter a name.'
     },
 
     email: {
         type: String,
+        required: 'Please enter email.'
     },
 
-    major: {
+    password: {
         type: String,
+        required: 'Please enter password.'
     },
 
-    year: {
-        type: Number,
-        // required: 'Please enter a year.'
+    user_type: {
+        type: String,
+        required: 'user_type is missing.'
     },
 
 
