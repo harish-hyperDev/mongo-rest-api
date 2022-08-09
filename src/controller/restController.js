@@ -2,12 +2,13 @@
 import mongoose from 'mongoose';
 
 //import the user schema from restMode.js file
-import { UserSchema, ProfileSchema } from '../model/restModel.js';
+import { UserSchema, ProfileSchema, LoggedInUserSchema } from '../model/restModel.js';
 
 //pass user object to create a new user in the database
 //using the model from our schema
 const User = mongoose.model('users', UserSchema);
 const Profile = mongoose.model('profiles', ProfileSchema);
+const LoggedInuser = mongoose.model('loggedInUser', LoggedInUserSchema);
 
 
 //export a function called addUser
@@ -220,3 +221,41 @@ export const deleteProfileByID = (req, res) => {
 
 
 
+
+
+
+//export a function called addUser
+export const addLoggedInUser = (req, res) => {
+
+    //create new user with the data coming from the request body
+    let newProfile = new LoggedInuser(req.body);
+
+    newProfile.save((err, user) => {
+
+        //send error message if a required field is missing
+        if (err) {
+            res.send(err);
+        }
+
+        //else pass the user information as a json object
+        res.json(user)
+    });
+
+}
+
+//export a function called getProfiles
+export const getLoggedInUser = (req, res) => {
+
+    //find Profiles in the databse
+    LoggedInuser.find({}, (err, user) => {
+
+        //send error message if not found
+        if (err) {
+            res.send(err);
+        }
+
+        //else pass the Profiles
+        res.json(user);
+    });
+
+}

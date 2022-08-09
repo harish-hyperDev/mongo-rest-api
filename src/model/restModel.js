@@ -79,3 +79,8 @@ export const ProfileSchema = new schema({
         default: Date.now
     }
 });
+
+export const LoggedInUserSchema = new schema({
+    name: String,
+    id: String
+});
