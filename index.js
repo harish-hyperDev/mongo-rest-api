@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 
 //call the allRoute function and send app which initializes express
 userRoutes(app);
+profileRoutes(app);
 
 // When a get request is made to / or the default page 
 // display a message.

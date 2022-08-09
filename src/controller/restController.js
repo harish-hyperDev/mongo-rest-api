@@ -2,11 +2,12 @@
 import mongoose from 'mongoose';
 
 //import the user schema from restMode.js file
-import { UserSchema } from '../model/restModel.js';
+import { UserSchema, ProfileSchema } from '../model/restModel.js';
 
 //pass user object to create a new user in the database
 //using the model from our schema
 const User = mongoose.model('users', UserSchema);
+const Profile = mongoose.model('profiles', ProfileSchema);
 
 
 //export a function called addUser
@@ -121,9 +122,9 @@ export const deleteUserByID = (req, res) => {
 export const addProfile = (req, res) => {
 
     //create new user with the data coming from the request body
-    let newUser = new User(req.body);
+    let newProfile = new Profile(req.body);
 
-    newUser.save((err, user) => {
+    newProfile.save((err, user) => {
 
         //send error message if a required field is missing
         if (err) {
@@ -136,11 +137,11 @@ export const addProfile = (req, res) => {
 
 }
 
-//export a function called getUsers
+//export a function called getProfiles
 export const getProfiles = (req, res) => {
 
     //find Profiles in the databse
-    User.find({}, (err, user) => {
+    Profile.find({}, (err, user) => {
 
         //send error message if not found
         if (err) {
@@ -154,11 +155,11 @@ export const getProfiles = (req, res) => {
 }
 
 
-//export a function called getUserByID
+//export a function called getProfileByID
 export const getProfileByID = (req, res) => {
 
     //find a specific user by ID
-    User.findById(req.params.userID, (err, user) => {
+    Profile.findById(req.params.profileID, (err, user) => {
 
         //send error message if not found
         if (err) {
@@ -172,11 +173,11 @@ export const getProfileByID = (req, res) => {
 }
 
 
-//export a function called updateUserByID
+//export a function called updateProfileByID
 export const updateProfileByID = (req, res) => {
 
     //find a specific user by ID and update
-    User.findOneAndUpdate({ _id: req.params.userID },
+    Profile.updateOne({ _id: req.params.profileID },
 
         req.body,
 
@@ -197,13 +198,14 @@ export const updateProfileByID = (req, res) => {
 }
 
 
-//export a function called deleteUserByID
+//export a function called deleteProfileByID
 export const deleteProfileByID = (req, res) => {
 
     //find a specific user by ID and remove it
-    User.remove({ _id: req.params.userID },
+    Profile.deleteOne({ _id: req.params.profileID },
 
         (err, user) => {
+            console.log(profileID)
 
             //send error message if user can't be deleted
             if (err) {
