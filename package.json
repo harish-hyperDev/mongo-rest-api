@@ -1,7 +1,7 @@
 {
   "name": "monogo-rest-api",
   "version": "1.0.0",
-  "description": "RESTful API for CRUD Operations on local machine MongoDB",
+  "description": "RESTful API for CRUD Operations on local MongoDB machine",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -4,12 +4,18 @@ import {
     getUsers,
     getUserByID,
     updateUserByID,
-    deleteUserByID
+    deleteUserByID,
+
+    addProfile,
+    getProfiles,
+    getProfileByID,
+    updateProfileByID,
+    deleteProfileByID
 } from '../controller/restController.js';
 
 //Specific routes for different endpoints 
 // such as get, post, delete and put
-const allRoutes = (app) => {
+export const userRoutes = (app) => {
 
     // we use student to get a list of all students or post a new student
     app.route('/users')
@@ -40,5 +46,36 @@ const allRoutes = (app) => {
     );
 }
 
+export const profileRoutes = (app) => {
+
+    // we use student to get a list of all students or post a new student
+    app.route('/profiles')
+
+    // call the getUsers function
+    .get(
+        getProfiles
+    )
+
+    //call the addUser function
+    .post(
+        addProfile
+    );
+
+    // we pass studentID to get, delete and update a specific student
+    app.route('/profiles/:profileID')
+
+    .get(
+        getProfileByID
+    )
+
+    .delete(
+        deleteProfileByID
+    )
+
+    .put(
+        updateProfileByID
+    );
+}
+
 //export the allRoutes function so index.js can use it
-export default allRoutes;
+// export default allRoutes;

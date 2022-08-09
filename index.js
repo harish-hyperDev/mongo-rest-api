@@ -1,7 +1,7 @@
 import express from 'express';
 
 //import the allRoutes function from our restRoute.js file
-import allRoutes from './src/route/restRoute.js';
+import { userRoutes, profileRoutes } from './src/route/restRoute.js';
 
 //import mongoose
 import mongoose from 'mongoose';
@@ -26,12 +26,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //call the allRoute function and send app which initializes express
-allRoutes(app);
+userRoutes(app);
 
 // When a get request is made to / or the default page 
 // display a message.
 app.get('/', (req, res) =>
-    res.send(`Your node and express server is running on porter: ${port}`)
+    res.send(`Your node and express server is running on port: ${port}`)
 );
 
 //print a message to the cli
