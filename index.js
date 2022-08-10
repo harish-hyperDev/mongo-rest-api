@@ -1,7 +1,7 @@
 import express from 'express';
 
 //import the allRoutes function from our restRoute.js file
-import { userRoutes, profileRoutes } from './src/route/restRoute.js';
+import { userRoutes, profileRoutes, loggedInUserRoutes } from './src/route/restRoute.js';
 
 //import mongoose
 import mongoose from 'mongoose';
@@ -22,15 +22,21 @@ mongoose.connect('mongodb://localhost/testDB', {
 });
 
 //parse requests and make it redable for our API
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-/* app.use(function (req, res, next) {
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+// app.use(express.bodyParser({limit: '50mb'}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(function (req, res, next) {
+    const corsWhitelist = [
+        'http://localhost:3000',
+        'http://192.168.10.62:3000',
+        'http://192.168.10.247:3000'
+    ];
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', "*");
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -41,11 +47,12 @@ app.use(bodyParser.json());
 
     // Pass to next layer of middleware
     next();
-}); */
+});
 
 //call the allRoute function and send app which initializes express
 userRoutes(app);
 profileRoutes(app);
+loggedInUserRoutes(app);
 
 // When a get request is made to / or the default page 
 // display a message.

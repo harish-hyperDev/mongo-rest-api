@@ -8,6 +8,7 @@ const schema = mongoose.Schema;
 export const UserSchema = new schema({
 
     //database item and its datatype
+    _id: Number,
     name: {
         type: String,
 
@@ -43,10 +44,13 @@ export const UserSchema = new schema({
 export const ProfileSchema = new schema({
 
     //database item and its datatype
+    _id: String,
+    // id: String,
     name: String,
+    description: String,
+    role: String,
     proficiency: Number,
     image: String,
-    description: String,
     availability_time: String,
     availability_join_date: String,
     other2_skills: String,

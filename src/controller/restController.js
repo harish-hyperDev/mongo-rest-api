@@ -21,7 +21,7 @@ export const addUser = (req, res) => {
 
         //send error message if a required field is missing
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the user information as a json object
@@ -38,7 +38,7 @@ export const getUsers = (req, res) => {
 
         //send error message if not found
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the users
@@ -56,7 +56,7 @@ export const getUserByID = (req, res) => {
 
         //send error message if not found
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the user
@@ -81,7 +81,7 @@ export const updateUserByID = (req, res) => {
 
             //send error message if user can not be updated
             if (err) {
-                res.send(err);
+                res.send(err);return;
             }
 
             //else pass the user
@@ -101,7 +101,7 @@ export const deleteUserByID = (req, res) => {
 
             //send error message if user can't be deleted
             if (err) {
-                res.send(err);
+                res.send(err);return;
             }
 
             //if user was deleted, pass a message
@@ -129,7 +129,7 @@ export const addProfile = (req, res) => {
 
         //send error message if a required field is missing
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the user information as a json object
@@ -146,7 +146,7 @@ export const getProfiles = (req, res) => {
 
         //send error message if not found
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the Profiles
@@ -164,7 +164,7 @@ export const getProfileByID = (req, res) => {
 
         //send error message if not found
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the user
@@ -189,7 +189,7 @@ export const updateProfileByID = (req, res) => {
 
             //send error message if user can not be updated
             if (err) {
-                res.send(err);
+                res.send(err);return;
             }
 
             //else pass the user
@@ -206,11 +206,10 @@ export const deleteProfileByID = (req, res) => {
     Profile.deleteOne({ _id: req.params.profileID },
 
         (err, user) => {
-            console.log(profileID)
 
             //send error message if user can't be deleted
             if (err) {
-                res.send(err);
+                res.send(err);return;
             }
 
             //if user was deleted, pass a message
@@ -234,7 +233,7 @@ export const addLoggedInUser = (req, res) => {
 
         //send error message if a required field is missing
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the user information as a json object
@@ -251,7 +250,7 @@ export const getLoggedInUser = (req, res) => {
 
         //send error message if not found
         if (err) {
-            res.send(err);
+            res.send(err);return;
         }
 
         //else pass the Profiles
