@@ -8,7 +8,7 @@ const schema = mongoose.Schema;
 export const UserSchema = new schema({
 
     //database item and its datatype
-    _id: Number,
+    _id: String,
     name: {
         type: String,
 
