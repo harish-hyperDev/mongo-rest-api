@@ -62,7 +62,6 @@ export const getUserByID = (req, res) => {
         //else pass the user
         res.json(user);
     });
-
 }
 
 

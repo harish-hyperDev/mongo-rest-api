@@ -60,6 +60,8 @@ app.get('/', (req, res) =>
     res.send(`Your node and express server is running on port: ${port}`)
 );
 
+
+
 //print a message to the cli
 app.listen(port, () => {
     console.log("restAPI is running on port: " + port);

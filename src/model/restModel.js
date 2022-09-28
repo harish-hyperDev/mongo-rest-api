@@ -11,7 +11,6 @@ export const UserSchema = new schema({
     _id: String,
     name: {
         type: String,
-
         //this specifies that the name field is required
         required: 'Please enter a name.'
     },
@@ -47,9 +46,12 @@ export const ProfileSchema = new schema({
     _id: String,
     // id: String,
     name: String,
+    aboutmedescription: String,
     description: String,
     role: String,
     proficiency: Number,
+    totalexp: Number,
+    deleted: Boolean,
     image: String,
     availability_time: String,
     availability_join_date: String,
